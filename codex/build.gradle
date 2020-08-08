@@ -1,0 +1,94 @@
+apply plugin: 'com.android.library'
+apply plugin: 'stringfog'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+
+        versionCode 3
+        versionName "3.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+
+            consumerProguardFiles "$rootDir/config/proguard-pro/optimize.pro"
+            consumerProguardFiles "$rootDir/config/proguard-pro/android.pro"
+            consumerProguardFiles "$rootDir/config/proguard-pro/okio.pro"
+            consumerProguardFiles "$rootDir/config/proguard-pro/okhttp3.pro"
+            consumerProguardFiles "$rootDir/config/proguard-pro/mopub.pro"
+            consumerProguardFiles "$rootDir/config/proguard-pro/chartboost.pro"
+            consumerProguardFiles "$rootDir/config/proguard-pro/ironsource.pro"
+            consumerProguardFiles "$rootDir/config/proguard-pro/flurry.pro"
+            consumerProguardFiles "$rootDir/config/proguard-pro/applovin.pro"
+            consumerProguardFiles "$rootDir/config/proguard-pro/facebook.pro"
+            consumerProguardFiles "$rootDir/config/proguard-pro/androidx.pro"
+            consumerProguardFiles "$rootDir/config/proguard-pro/eventbus.pro"
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    android {
+        compileOptions {
+            sourceCompatibility 1.8
+            targetCompatibility 1.8
+        }
+    }
+}
+
+stringfog {
+    // 这是加解密key，可以自由定义。
+    key project.key
+    // 开关
+    enable true
+    // 加解密库的实现类路径，需和上面配置的加解密算法库一致。
+    implementation 'com.github.megatronking.stringfog.xor.StringFogImpl'
+    // 指定需加密的代码包路径，可配置多个，未指定将默认全部加密。
+//    fogPackages = ['com.xxx.xxx']
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.core:core:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    implementation 'com.github.megatronking.stringfog:xor:1.1.0'
+
+    //Facebook audience network
+    implementation "com.facebook.android:facebook-android-sdk:${fb_sdk_ver}"
+    implementation "com.facebook.android:audience-network-sdk:${fan_sdk_ver}"
+
+    implementation "com.google.android.gms:play-services-ads-identifier:${googlePlayServicesVersion}"
+
+    //MoPub
+    implementation('com.mopub:mopub-sdk:5.10.0@aar') {
+        transitive = true
+        exclude module: 'moat-mobile-app-kit'
+    }
+
+    // Vungle
+    implementation 'com.vungle:publisher-sdk-android:6.5.3'
+    implementation 'com.mopub.mediation:vungle:6.5.3.0'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+    implementation 'org.greenrobot:eventbus:3.2.0'
+    implementation 'net.grandcentrix.tray:tray:0.12.0'
+
+    implementation "androidx.work:work-runtime:2.3.4"
+    implementation 'com.flurry.android:analytics:12.2.0@aar'
+    implementation 'org.greenrobot:greendao:3.3.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+}

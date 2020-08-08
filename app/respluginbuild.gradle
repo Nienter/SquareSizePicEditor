@@ -1,0 +1,60 @@
+//ZZ 1.
+apply plugin: 'AndResFileGuard'
+
+//ZZ 2.
+String RESKEY = project.RESKEY //16字节 128位
+String ENCResDirName = project.ENCResDirName //加密資源目錄名稱，最好一個應用改一個
+String ENCArscName = project.ENCArscName//加密resouce.arsc名稱，最好一個應用改一個
+andResFileGuard {
+    key = RESKEY
+    // add <yourpackagename>.R.drawable.icon into whitelist.
+    // because the launcher will get the icon with his name
+    whiteList = ["R.mipmap.ic_launcher_round",
+                 "R.mipmap.ic_launcher",
+                 "R.string.app_name",
+                 //自己相关
+                 "R.layout.activity_splash",
+                 "R.color.colorAccent",
+                 "R.style.sp",
+                 "R.drawable.progress_bar",
+//                 "R.style.Theme.*",
+                 "R.color.colorPrimaryDark",
+                 "R.color.colorPrimary",
+                 "R.drawable.home_bg",
+                 //sdk相关
+                 "R.drawable.abc_vector_test",
+                 "R.integer.google_play_services_version",
+                 "R.string._facebook_key",
+                 "R.string.tray__authority",
+                 "R.xml.network_security_config",
+                 "R.bool.workmanager_test_configuration"]
+    //打包时自动使用签名（配置再 signingConfig signingConfigs.release 中的）
+    useSign = true
+    encArscName = ENCArscName
+    encResDirName = ENCResDirName
+//    sourceApk = "D:\\lgdx161\\restest\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+//    sourceBuildType = "Debug"
+//    finalApkBackupPath = "${project.rootDir}\\final.apk"
+}
+
+android {
+    defaultConfig {
+        //ZZ 4. 解密过程需要的  解密的AES key 和 加密后的resouce.arsc 和 res 文件的名称
+        buildConfigField "String", "RESKEY", "\"${RESKEY}\""
+        buildConfigField "String", "ENCR", "\"${ENCResDirName}\""
+        buildConfigField "String", "ENCA", "\"${ENCArscName}\""
+    }
+
+    //ZZ 5. 手动写id ，可以关闭
+    aaptOptions {
+        File publicTxtFile = project.rootProject.file('public.txt')
+        println "publicTxtFile " + publicTxtFile
+        if (publicTxtFile.exists()) {
+//            additionalParameters "--stable-ids", "${project.rootProject.file('public.txt').absolutePath}"
+        } else {
+            additionalParameters "--emit-ids", "${project.rootProject.file('public.txt').absolutePath}"
+        }
+//        ignoreAssetsPattern '*'
+//        ignoreAssets '*'
+    }
+}

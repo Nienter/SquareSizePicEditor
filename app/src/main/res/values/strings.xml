@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SquareSizePicEditor</string>
+    <string name="pio" translatable="false">square.edd.dddee.fileprovider</string>
+
+</resources>

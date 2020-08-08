@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+apply from: "respluginbuild.gradle"
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "square.size.editor"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        renderscriptSupportModeEnabled true
+
+
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation("com.squareup.okhttp3:okhttp:4.8.0")
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.jakewharton:butterknife:10.2.2'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.2'
+    implementation project(path: ':codex')
+    implementation 'com.github.HuanTanSheng:EasyPhotos:3.0.6'
+    implementation 'com.github.Theophrast:SquareImageView:1.0.1'
+
+}
