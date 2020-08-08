@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">SquareSizePicEditor</string>
+    <string name="app_name">Square SizePic Editor</string>
     <string name="pio" translatable="false">square.edd.dddee.fileprovider</string>
+    <string name="gallery">Gallery</string>
+    <string name="collage">Collage</string>
+    <string name="setting">Setting</string>
+    <string name="about">About</string>
+    <string name="camera">Camera</string>
 
 </resources>

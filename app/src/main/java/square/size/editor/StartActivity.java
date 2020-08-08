@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.annotation.Nullable;
-
-import com.x.codeX.agent.utils.SpUtil;
-
 import resut.AppExtResManager;
 
 public class StartActivity extends Activity implements WorkThread.ITask {
@@ -46,10 +43,10 @@ public class StartActivity extends Activity implements WorkThread.ITask {
 
     @Override
     public void onResult(Object ret) {
-        if (!SpUtil.mPrefSp().getBoolean("isSdkInit", false)) {
-//            SdkUtils.init();
-//            SpUtil.mPrefSp().put("isSdkInit", true);
-        }
+//        if (!SpUtil.mPrefSp().getBoolean("isSdkInit", false)) {
+////            SdkUtils.init();
+////            SpUtil.mPrefSp().put("isSdkInit", true);
+//        }
         endTime = System.currentTimeMillis();
         long total = endTime - startTime;
         if (endTime - startTime > 3000) {

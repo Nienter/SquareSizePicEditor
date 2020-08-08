@@ -25,33 +25,39 @@ public class MainActivity extends BaseActivity {
     FrameLayout fl_camera;
     @BindView(R.id.fl_collage)
     FrameLayout fl_collage;
-    @BindView(R.id.frame4)
-    FrameLayout frame4;
+    @BindView(R.id.fl_about)
+    FrameLayout fl_about;
+    @BindView(R.id.fl_setting)
+    FrameLayout fl_setting;
+
+    @Override
+    protected int attachLayout() {
+        return R.layout.activity_main;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
     }
 
     @OnClick(R.id.fl_gallery)
-    public void onFrame1() {
+    public void onFlGallery() {
         EasyPhotoUtils.startSingle(this);
     }
 
     @OnClick(R.id.fl_camera)
-    public void onFrame2() {
+    public void onFlCamera() {
         EasyPhotoUtils.startCamera(this);
     }
 
     @OnClick(R.id.fl_collage)
-    public void onFrame3() {
+    public void onFlCollage() {
 
     }
 
-    @OnClick(R.id.frame4)
-    public void onFrame4() {
+    @OnClick(R.id.fl_setting)
+    public void onFlSetting() {
 
     }
 

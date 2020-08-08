@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply from: "respluginbuild.gradle"
+//apply from: "respluginbuild.gradle"
 
 android {
     compileSdkVersion 29
@@ -11,9 +11,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         renderscriptSupportModeEnabled true
-
 
 
     }
@@ -41,8 +39,9 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.jakewharton:butterknife:10.2.2'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.2'
-    implementation project(path: ':codex')
+//    implementation project(path: ':codex')
     implementation 'com.github.HuanTanSheng:EasyPhotos:3.0.6'
-    implementation 'com.github.Theophrast:SquareImageView:1.0.1'
-
+//    implementation 'com.github.Theophrast:SquareImageView:1.0.1'
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+    implementation 'androidx.cardview:cardview:1.0.0'
 }

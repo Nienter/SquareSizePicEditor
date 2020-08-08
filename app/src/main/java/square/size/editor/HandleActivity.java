@@ -23,10 +23,14 @@ public class HandleActivity extends BaseActivity {
     private Matrix matrix = new Matrix();
 
     @Override
+    protected int attachLayout() {
+        return R.layout.activity_handle;
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_handle);
         ButterKnife.bind(this);
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) frame_panel.getLayoutParams();
         layoutParams.width =Tools.getWidth(this);
