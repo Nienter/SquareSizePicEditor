@@ -35,10 +35,10 @@ public class HandleActivity extends BaseActivity {
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) frame_panel.getLayoutParams();
         layoutParams.width =Tools.getWidth(this);
         layoutParams.height = Tools.getWidth(this);
-        frame_panel.setLayoutParams(layoutParams);
+//        frame_panel.setLayoutParams(layoutParams);
         Bitmap resource = BitmapFactory.decodeResource(getResources(), R.drawable.aaa);
         Log.d(TAG, "onCreate: "+resource.getWidth());
-        resource = Tools.resize(resource, 0, Tools.getWidth(this)-Tools.dp2px(this,40));
+        resource = Tools.resize(resource, 0, Tools.getWidth(this)-Tools.dp2px(this,40),varyImageView);
         varyImageView.setBitmap(resource);
     }
 

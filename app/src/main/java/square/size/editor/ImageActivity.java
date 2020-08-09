@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,7 +17,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import square.size.editor.adapter.ImageAdapter;
 
-public class ImagerActivity extends BaseActivity {
+public class ImageActivity extends BaseActivity {
     private List<String> paths = null;
     @BindView(R.id.bt_back)
     AppCompatImageButton bt_back;

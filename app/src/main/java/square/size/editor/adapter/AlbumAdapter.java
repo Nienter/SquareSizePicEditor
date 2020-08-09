@@ -2,7 +2,6 @@ package square.size.editor.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 import square.size.editor.Album;
-import square.size.editor.ImagerActivity;
+import square.size.editor.ImageActivity;
 import square.size.editor.R;
 
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumHolder> {
@@ -43,7 +42,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumHolder>
         holder.tv_album_name.setText(albums.get(position).getDirName());
         holder.tv_pic_count.setText(String.format("%ditems", albums.get(position).getPicNum()));
         holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(mContext, ImagerActivity.class);
+            Intent intent = new Intent(mContext, ImageActivity.class);
             intent.putExtra("paths", albums.get(position).getDirPath());
             mContext.startActivity(intent);
         });

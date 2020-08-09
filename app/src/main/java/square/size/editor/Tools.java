@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 
 public class Tools {
     private static final String TAG = "Tools";
@@ -24,13 +25,17 @@ public class Tools {
         return (int) (dpValue * scale + 0.5f);
     }
 
-    public static Bitmap resize(Bitmap b, float x, float y) {
+    public static Bitmap resize(Bitmap b, float x, float y, View view) {
         float w = b.getWidth();
         float h = b.getHeight();
         Log.d(TAG, "resize: "+w+"***"+h);
 
         float sx = (float) x / w;
         float sy = (float) y / h;
+        int midx = view.getBottom() / 2;
+        int midy = view.getRight() / 2;
+       int startX = (int) (midy - (sy / 2));
+        int startY = (int) (midx - (sx / 2));
         Matrix matrix = new Matrix();
         //也可以按两者之间最大的比例来设置放大比例，这样不会是图片压缩
 //        float bigerS = Math.max(sx,sy);
