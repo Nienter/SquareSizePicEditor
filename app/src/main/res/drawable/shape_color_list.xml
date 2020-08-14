@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    <item android:drawable="@drawable/shape_color_normal" android:state_selected="false" />-->
+
+<!--    <item android:drawable="@drawable/shape_color_ed" android:state_selected="true"/>-->
+<item android:state_selected="true">
+    <shape android:shape="oval">
+        <size android:width="26dp" android:height="26dp"/>
+        <stroke android:width="1.5dp" android:color="#6A5ACD" />
+        <solid android:color="@color/colorPrimary" />
+    </shape>
+</item>
+    <item android:state_selected="false">
+        <shape android:shape="oval">
+            <size android:width="26dp" android:height="26dp"/>
+            <solid android:color="@color/colorAccent" />
+        </shape>
+    </item>
+</selector>

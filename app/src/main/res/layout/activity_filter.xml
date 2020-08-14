@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ry_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+
+        tools:listitem="@layout/item_filter"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <jp.co.cyberagent.android.gpuimage.GPUImageView
+        android:id="@+id/gpu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ry_filter"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="30dp"
+        app:gpuimage_show_loading="false"
+        app:gpuimage_surface_type="surface_view" />
+</RelativeLayout>

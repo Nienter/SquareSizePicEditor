@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="70dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="70dp"
+    android:orientation="vertical"
+    android:padding="8dp"
+    >
+
+  <square.size.editor.puzz.view.SquarePuzzleView
+      android:id="@+id/puzzle"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:line_color="@color/colorPrimary"
+      />
+
+</FrameLayout>

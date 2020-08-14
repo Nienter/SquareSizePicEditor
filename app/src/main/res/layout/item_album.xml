@@ -1,34 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="22dp"
+    android:layout_marginLeft="15dp"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_cover"
-        android:layout_width="105dp"
-        android:layout_height="105dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/startpage_bg" />
-
-    <androidx.appcompat.widget.AppCompatTextView xmlns:tools="http://schemas.android.com/tools"
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_album_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/iv_cover"
         android:layout_alignLeft="@+id/iv_cover"
-        android:hint="test"
         android:layout_marginTop="10dp"
+        android:hint="test"
         android:textColor="#333333"
-        android:textColorHint="#333333" />
+        android:textColorHint="#333333"
+        android:textSize="14sp" />
 
-    <androidx.appcompat.widget.AppCompatTextView xmlns:tools="http://schemas.android.com/tools"
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_pic_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_album_name"
         android:layout_alignLeft="@+id/iv_cover"
-        android:hint="test"
         android:layout_marginTop="5dp"
-        android:textColor="#666666" />
+        android:hint="test"
+        android:textColor="#666666"
+        android:textSize="10sp" />
+
+    <com.itheima.roundedimageview.RoundedImageView
+        android:id="@+id/iv_cover"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/startpage_bg"
+        app:riv_corner_radius="10dp"
+        app:riv_oval="false" />
 </RelativeLayout>

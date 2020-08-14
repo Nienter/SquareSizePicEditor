@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_adjust"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_han"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_contrast"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/selector_contrast"
+                android:drawablePadding="4.3dp"
+                android:gravity="center"
+                android:text="@string/contrast"
+                android:textColor="@drawable/selector_text"
+                android:textSize="8sp" />
+
+            <TextView
+                android:id="@+id/tv_bringhtness"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/selector_brightness"
+                android:drawablePadding="4.3dp"
+                android:gravity="center"
+                android:text="@string/brightness"
+                android:textColor="@drawable/selector_text"
+                android:textSize="8sp" />
+
+            <TextView
+                android:id="@+id/tv_saturation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/selector_saturation"
+                android:drawablePadding="4.3dp"
+                android:gravity="center"
+                android:text="@string/saturation"
+
+                android:textColor="@drawable/selector_text"
+                android:textSize="8sp" />
+
+            <TextView
+                android:id="@+id/tv_exposure"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/selector_exposure"
+                android:drawablePadding="4.3dp"
+                android:gravity="center"
+                android:text="@string/exposure"
+                android:textColor="@drawable/selector_text"
+                android:textSize="8sp" />
+
+            <TextView
+                android:id="@+id/tv_warmth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/selector_warm"
+                android:drawablePadding="4.3dp"
+                android:gravity="center"
+                android:text="@string/warmth"
+                android:textColor="@drawable/selector_text"
+                android:textSize="8sp" />
+
+            <TextView
+                android:id="@+id/tv_vignette"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/selector_vignette"
+                android:drawablePadding="4.3dp"
+
+                android:gravity="center"
+                android:text="vignette"
+                android:textColor="@drawable/selector_text"
+                android:textSize="8sp" />
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/seek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <jp.co.cyberagent.android.gpuimage.GPUImageView
+        android:id="@+id/gpu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_adjust"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="30dp"
+        app:gpuimage_show_loading="false"
+        app:gpuimage_surface_type="surface_view" />
+</RelativeLayout>

@@ -19,4 +19,9 @@
 
     <!--状态栏-->
     <color name="easy_photos_status_bar">#393a3f</color>//#ffffff
+
+    <color name="windowBackground">#1C1C1C</color>
+    <color name="overlay">#AA1C1C1C</color>
+    <color name="normal_text">#FF5988</color>
+    <color name="gray_text">#DBDBDB</color>
 </resources>

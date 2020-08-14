@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.itheima.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,11 +51,11 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumHolder>
 
     @Override
     public int getItemCount() {
-        return 0;
+        return albums.size();
     }
 
     public class AlbumHolder extends RecyclerView.ViewHolder {
-        private AppCompatImageView iv_cover;
+        private RoundedImageView iv_cover;
         private AppCompatTextView tv_album_name;
         private AppCompatTextView tv_pic_count;
 

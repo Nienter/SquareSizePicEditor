@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.graphics.PointF;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -72,22 +74,40 @@ public class VaryImageView extends AppCompatImageView {
 
     public void setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
-        getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-            Log.d(TAG, "setBitmap: "+bitmap.getWidth()+"**"+getWidth());
-            matrix.reset();
-            matrix.postTranslate((getWidth()-bitmap.getWidth())/2, 0);
-            invalidate();
-        });
+        getViewTreeObserver().addOnGlobalLayoutListener(layoutListener);
     }
+
+    private ViewTreeObserver.OnGlobalLayoutListener layoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
+        @Override
+        public void onGlobalLayout() {
+            Log.d(TAG, "setBitmap: " + bitmap.getWidth() + "**" + getWidth());
+            matrix.postTranslate((getWidth() - bitmap.getWidth()) / 2, 0);
+            invalidate();
+            getViewTreeObserver().removeOnGlobalLayoutListener(this);
+        }
+    };
 
     @Override
     protected void onDraw(Canvas canvas) {
+//        canvas.save();
+//        if (bitmap != null) {
+//            canvas.drawBitmap(bitmap, matrix, null);
+//        }
         canvas.save();
-        if (bitmap != null) {
-            canvas.drawBitmap(bitmap, matrix, null);
-        }
+        canvas.clipRect(0, 0, getWidth() / 2, getHeight());
+        Paint paint = new Paint();
+        canvas.drawBitmap(bitmap, matrix, paint);
+        canvas.restore();
+
+        canvas.save();
+        Paint paint2 = new Paint();
+        canvas.clipRect(getWidth() / 2, 0, getWidth(), getHeight());
+        canvas.drawBitmap(bitmap, getWidth() / 2, 0, paint2);
         canvas.restore();
     }
+
+    RectF r1 = new RectF(0f, 0f, getWidth() / 2, getHeight());
+    RectF r2 = new RectF();
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

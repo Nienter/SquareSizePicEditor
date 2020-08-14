@@ -8,6 +8,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.KeyEvent;
+import android.view.View;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -15,18 +23,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import square.size.editor.adapter.AlbumAdapter;
 
 public class GalleryActivity extends BaseActivity {
-    private ProgressDialog progressDialog = new ProgressDialog(this);
+    private ProgressDialog progressDialog;
     @BindView(R.id.bt_back)
     AppCompatImageButton bt_back;
     @BindView(R.id.tv_title)
@@ -49,12 +52,14 @@ public class GalleryActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
         initView();
     }
 
     private void initView() {
-        tv_title.setText(getString(R.string.gallery));
-
+        tv_title.setText(getString(R.string.galleryalbum));
+        progressDialog = new ProgressDialog(this);
+        bt_next.setVisibility(View.GONE);
         getAlbum();
     }
 
@@ -110,12 +115,14 @@ public class GalleryActivity extends BaseActivity {
 //                        mImgDir = parentFile;
 //                    }
                 }
-
+                mCursor.close();
+                mDirPaths = null;
                 return null;
             }
 
             @Override
             public void onResult(Object ret) {
+                dismissLoad();
                 albumAdapter = new AlbumAdapter(mImageFolders);
                 ry_album.setLayoutManager(new GridLayoutManager(GalleryActivity.this, 3));
                 ry_album.setAdapter(albumAdapter);
@@ -148,13 +155,22 @@ public class GalleryActivity extends BaseActivity {
 
     @OnClick(R.id.bt_back)
     public void onBack() {
-        onBackPressed();
+        back();
     }
 
-    @OnClick(R.id.bt_next)
-    public void onNext() {
-        Intent intent = new Intent(this, HandleActivity.class);
+    private void back() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            back();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
